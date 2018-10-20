@@ -1,6 +1,6 @@
 # Women Techmakers Berlin - JavaScript Crash Course 2018
 ----
-A repository containing both notes and homework for the course
+### A repository containing both notes and homework for the course
 
 Lecture 1: JavaScript & ES6 Fundamentals
 Lecture 2: Node.js Ecosystem & Basics
