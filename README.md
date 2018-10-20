@@ -13,4 +13,5 @@
 * Lecture 9: Graduation Event
 
 Communication channel:
+
 [WTM Slack](https://womentechmakersberlin.slack.com/)
