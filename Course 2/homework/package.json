@@ -1,0 +1,15 @@
+{
+  "name": "The Cinemas",
+  "version": "1.0.0",
+  "description": "A project that tracks movies / persons / shopped items / theaters and their sales",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marinos Chrysanthou",
+  "license": "MIT"
+}
