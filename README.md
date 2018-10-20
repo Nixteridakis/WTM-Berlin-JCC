@@ -19,6 +19,6 @@ Communication channel:
 
 Resources:
 
-[Modern JavaScript Cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet#modern-javascript-cheatsheet)
+*[Modern JavaScript Cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet#modern-javascript-cheatsheet)
 
-[You Don't Know JS (book series)](https://github.com/getify/You-Dont-Know-JS)
+*[You Don't Know JS (book series)](https://github.com/getify/You-Dont-Know-JS)
