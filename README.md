@@ -11,3 +11,6 @@
 * Lecture 7: The Frontend
 * Lecture 8: Deploying & Scaling Apps with Docker
 * Lecture 9: Graduation Event
+
+Communication channel:
+[WTM Slack](https://womentechmakersberlin.slack.com/)
