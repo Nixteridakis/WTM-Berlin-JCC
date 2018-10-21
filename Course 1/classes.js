@@ -67,4 +67,4 @@ Paul.buyTicketFor(Titans)
 Paul.shop(popcorn)
 
 Titans.attendies()
-MaxCinemas.sales()
+MaxCinemas.sales() 
