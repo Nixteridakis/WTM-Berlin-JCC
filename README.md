@@ -2,8 +2,8 @@
 ----
 ### A repository containing both the notes and homework for the whole course
 
-* Lecture 1: JavaScript & ES6 Fundamentals
-* Lecture 2: Node.js Ecosystem & Basics
+* Lecture 1: JavaScript & ES6 Fundamentals - Completed
+* Lecture 2: Node.js Ecosystem & Basics - Completed
 * Lecture 3: Promises and Async Programming
 * Lecture 4: HTTP APIs with Express.js
 * Lecture 5: Adding a MongoDB Datastore
