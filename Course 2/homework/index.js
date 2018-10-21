@@ -14,7 +14,6 @@ const Titans = new Movie ('Titans',7)
 const TheDeuce = new Movie ('The Deuce',8)
 const candy = new Shop ('candy',3.45)
 const popcorn = new Shop ('pop corn',5.00)
-
 /* A person can buy Ticket for a particular movie on a particular Theater therefore the items
 a person can buy can only be related to that theater and not have to be specified*/
 
