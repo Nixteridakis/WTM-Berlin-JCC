@@ -11,6 +11,7 @@ Two external modules have been used for this:
 * PDFKit [PDFKit](https://www.npmjs.com/package/pdfkit)	
 
 Notes:
+
 A person can buy Ticket for a particular movie on a particular Theater therefore the items
 a person can buy can only be related to that theater.
 
