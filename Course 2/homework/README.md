@@ -18,4 +18,4 @@ a person can buy can only be related to that theater.
 The application can be scalable in terms of a person going to multiple theaters in a single day 
 or/and on multiple days.
 
-For simplicity, the arguemnts of the PDF have been sent individually and not stored in an array.
+For simplicity, the arguments of the PDF have been sent individually and not stored in an array.
