@@ -1,7 +1,7 @@
 # Cinema Theater
 ================
 
-A data model were a person is watching a movie in a theater that are both attached to a specific price.
+A data model were a person is watching a movie in a theater and both have a specific price.
 There is a shop were you can buy different items at different prices.
 
 Two external modules have been used for this:
