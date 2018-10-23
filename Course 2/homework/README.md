@@ -1,8 +1,8 @@
 # Cinema Theater
 ================
 
-A data model were a person is watching a movie in a theater and both have a specific price.
-There is a shop were you can buy different items at different prices.
+A data model were a person is watching a movie in a theater attached to a unique price.
+There is a shop were you can buy different priced items.
 
 Two external modules have been used for this:
 
@@ -18,4 +18,4 @@ a person can buy can only be related to that theater.
 The application can be scalable in terms of a person going to multiple theaters in a single day 
 or/and on multiple days.
 
-For simplicity, the arguments of the PDF have been sent individually.
+For simplicity, the arguments of the PDF have been sent manually.
