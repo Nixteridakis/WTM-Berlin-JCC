@@ -1,67 +1,28 @@
-const fs = require('fs');
+const Person = require('./models/person')
+const Meetup = require('./models/meetup')
+const PersonService = require('./services/person-service')
 
-/*
-First version, synchronous
-*/
+console.log('Hello World!')
 
-const file1 = fs.readFileSync(__dirname + '/files/1.txt', 'utf8');
-console.log(file1);
+async function main() {
+  const mert = new Person('Mert', 33)
+  const armagan = new Person('Armagan', 34)
+  const chris = new Person('Chris', 34)
 
-const file2 = fs.readFileSync(__dirname + '/files/2.txt', 'utf8');
-console.log(file2);
+  const wtmb = new Meetup('Women Tech Makers Berlin', 'Eurostaff')
+  armagan.attend(wtmb)
+  mert.attend(wtmb)
+  chris.attend(wtmb)
 
-const file3 = fs.readFileSync(__dirname + '/files/3.txt', 'utf8');
-console.log(file3);
+  wtmb.report()
 
-/*
-Second version, asynchronous
-*/
+  await PersonService.add(mert)
+  await PersonService.add(armagan)
+  await PersonService.add(chris)
+  const people = await PersonService.findAll()
 
-fs.readFile(__dirname + '/files/1.txt', 'utf8', (err, contents1) => {
-    console.log(contents1)
-    fs.readFile(__dirname + '/files/2.txt', 'utf8', (err, contents2) => {
-        console.log(contents2)
-        fs.readFile(__dirname + '/files/3.txt', 'utf8', (err, contents3) => {
-            console.log(contents3)
-        });
-    });
-});
-
-
-/*
-Third version, promises
-*/
-
-let readFile = (filename) => {
-    return new Promise((resolve, reject) => {
-        fs.readFile(filename, 'utf8', (err, contents) => {
-            if (err) return reject(err);
-
-            resolve(contents);
-        });
-    });
-}
-
-readFile(__dirname + '/files/1.txt')
-    .then(console.log)
-    .then(() => readFile(__dirname + '/files/2.txt'))
-    .then(console.log)
-    .then(() => readFile(__dirname + '/files/3.txt'))
-    .then(console.log);
-
-/*
-Fourth version, async / await
-*/
-
-const main = async () => {
-    const contents1 = await readFile(__dirname + '/files/1.txt')
-    console.log(contents1)
-
-    const contents2 = await readFile(__dirname + '/files/2.txt')
-    console.log(contents2)
-
-    const contents3 = await readFile(__dirname + '/files/3.txt')
-    console.log(contents3)
+  console.log(people[0].name)
+  console.dir(mert)
 }
 
 main()

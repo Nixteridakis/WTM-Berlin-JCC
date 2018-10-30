@@ -3,8 +3,12 @@ module.exports = class Person {
         this.name = name
         this.age = age
     }
-  
+
     attend(meetup) {
         meetup.attendees.push(this)
     }
-  }
+
+    static create({ name, age }) {
+        return new Person(name, age);
+    }
+}

@@ -6,8 +6,8 @@ module.exports = class Meetup {
         this.location = location
         this.attendees = []
     }
-  
+
     report() {
-        console.log(chalk.yellow.bgRed.bold(this.name, 'meetup is held at', this.location, 'and number of attendees are', this.attendees.length))
+        console.log(chalk.blue.bgRed.bold(this.name), 'meetup is held at', chalk.green(this.location), 'and number of attendees are', this.attendees.length)
     }
 }

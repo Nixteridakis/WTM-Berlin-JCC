@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "flatted": "^2.0.0"
+  },
   "devDependencies": {
     "chalk": "^2.4.1",
     "pdfkit": "^0.8.3"

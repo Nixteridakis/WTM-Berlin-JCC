@@ -3,5 +3,9 @@ module.exports = class Shop{
         this.name = name
         this.price = price
     }
+    
+    static create({ name, price}){
+        return new Shop (name, price)
+    }
 }
 
