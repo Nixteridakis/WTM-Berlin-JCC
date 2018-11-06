@@ -20,9 +20,10 @@ module.exports = class Person {
       Theater.add(theater,item.price)
     }
 
-    static create({ name, age, shopped, id }){
+    static create({ name, age, id, shopped }){
       const newPerson = new Person(name,age,id)
       newPerson.shopped = shopped.map(Shop.create)
       return newPerson
     }
 }
+

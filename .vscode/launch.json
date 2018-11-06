@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/WTB/Course 3/homework/index.js"
+            "program": "${workspaceFolder}/Course 4/homework/index.js"
         }
     ]
 }
