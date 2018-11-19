@@ -5,7 +5,6 @@ const movieService = require('./services/movie-services')
 
 const app = express()
 
-
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
 
