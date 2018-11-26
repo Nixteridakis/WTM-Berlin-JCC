@@ -7,7 +7,7 @@
 * Lecture 3: Promises and Async Programming - **Completed**
 * Lecture 4: HTTP APIs with Express.js  - **Completed**
 * Lecture 5: Adding a MongoDB Datastore  - **Completed**
-* Lecture 6: Testing
+* Lecture 6: Testing - **Completed**
 * Lecture 7: The Frontend
 * Lecture 8: Deploying & Scaling Apps with Docker
 * Lecture 9: Graduation Event
