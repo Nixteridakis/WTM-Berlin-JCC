@@ -8,7 +8,7 @@
 * Lecture 4: HTTP APIs with Express.js  - **Completed**
 * Lecture 5: Adding a MongoDB Datastore  - **Completed**
 * Lecture 6: Testing - **Completed**
-* Lecture 7: The Frontend
+* Lecture 7: The Frontend **Completed**
 * Lecture 8: Deploying & Scaling Apps with Docker
 * Lecture 9: Graduation Event
 
