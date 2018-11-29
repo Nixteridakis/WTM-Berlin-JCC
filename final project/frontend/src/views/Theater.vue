@@ -23,6 +23,7 @@ export default {
             const movies = this.$store.state.theaters.filter(function(theater){
                 return theater.name ==  this.theaterName
             })
+            return movies
         }
     }
 }
