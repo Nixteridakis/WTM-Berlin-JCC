@@ -9,7 +9,7 @@
 * Lecture 5: Adding a MongoDB Datastore  - **Completed**
 * Lecture 6: Testing - **Completed**
 * Lecture 7: The Frontend - **Completed**
-* Lecture 8: Deploying & Scaling Apps with Docker
+* Lecture 8: Deploying & Scaling Apps with Docker **Completed**
 * Lecture 9: Graduation Event
 
 Communication channel:
