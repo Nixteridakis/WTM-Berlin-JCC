@@ -16,10 +16,15 @@ async function deleteItem(itemId){
    return ShopModel.remove({_id: itemId})
 }   
 
+async function deleteAll(){
+    return ShopModel.remove()
+ }   
+
 
 module.exports = {
     add,
     findAll,
     loadById,
-    deleteItem
+    deleteItem,
+    deleteAll
 }

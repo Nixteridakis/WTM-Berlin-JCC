@@ -20,7 +20,7 @@ async function findAll(){
 } 
 
 async function loadById(movieId){
-    return MovieModel.findOne({ _id: movieId }).populate('attendies')
+    return MovieModel.findOne({ _id: movieId }).populate('attendees')
 }   
 
 async function deleteMovie(movieId){

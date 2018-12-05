@@ -28,11 +28,15 @@ async function deletePerson(personId){
    return PersonModel.remove({_id: personId})
 }   
 
-
+async function deleteAll(){
+    return PersonModel.remove()
+}
+   
 module.exports = {
     add,
     addItem,
     findAll,
     loadById,
-    deletePerson
+    deletePerson,
+    deleteAll
 }

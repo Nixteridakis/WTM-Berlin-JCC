@@ -68,6 +68,11 @@ app.delete('/person/:id', async (req, res) => {
     res.send(person)
 })
 
+app.delete('/people', async (req, res) => {
+    const person = await personService.deleteAll()
+    res.send(person)
+})
+
 
 //shop requests
 
@@ -88,6 +93,11 @@ app.get('/item/:id', async (req, res) => {
 
 app.delete('/item/:id', async (req, res) => {
     const item = await shopService.deleteItem(req.params.id)
+    res.send(item)
+})
+
+app.delete('/shop', async (req, res) => {
+    const item = await shopService.deleteAll()
     res.send(item)
 })
 
