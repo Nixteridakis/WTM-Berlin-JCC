@@ -1,6 +1,6 @@
 <template>
 <div>
-    <booking v-if="currentBooking.Name !== undefined" :currentBooking="currentBooking" @clearBooking="currentBooking = []" :theater="theater"></booking>
+    <booking v-if="currentBooking.Name !== undefined" :currentBooking="currentBooking" @clearBooking="clear" :theater="theater"></booking>
     <div id="theater">
         <app-navbar></app-navbar>
         <header :style="{ backgroundImage: `url('${theater.image}')` }">
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="totalSales">
-                    <p>Total Theater Sales {{ totalGross }}</p>
+                    <p @click.prevent="clear">Total Theater Sales {{ totalGross }}</p>
                 </div>
         </main>
     </div>
@@ -40,8 +40,8 @@
 import Booking from '../components/Booking.vue'
 
 export default {
-    created(){
-        this.itemSales
+    beforeMount(){
+        this.clear
     },
     components:{
     'booking': Booking
@@ -51,7 +51,7 @@ export default {
             currentBooking : {},
             active: false,
             attendeesNum : 0,
-            totalGross: 0
+            totalGross: undefined
         }
     },
     methods: {
@@ -68,6 +68,35 @@ export default {
                 }
             })
             return attendeesName
+        },
+        clear(){
+            this.currentBooking = {}
+            let totalAttendees = 0
+            let totalMoney = 0
+
+            const attendeesItems = this.theaterMovies.map(movie => {
+                const attendeeList = movie.attendees.map(attendeeId => {
+                    const attendeeObj = this.$store.state.attendees.filter(x => x._id == attendeeId)
+                    return attendeeObj[0].shopped
+                })
+                return attendeeList
+            })
+            const gross = attendeesItems.map(personItems => {
+                const total = personItems.map(item => {
+                    if(item.length > 0){
+                        const singleItem = item.map(x =>{
+                            totalMoney += x.price
+                        })
+                    }
+                })
+                return
+            })
+            this.theaterMovies.map(x => {
+                totalAttendees+=x.attendees.length
+            })
+            this.attendeesNum = totalAttendees
+            this.totalGross = totalMoney + (this.attendeesNum * 8)
+            return totalMoney
         }
     },
     computed:{
@@ -81,6 +110,7 @@ export default {
             return movies
         },
          itemSales(){
+            let totalAttendees = 0
             let totalMoney = 0
             const attendeesItems = this.theaterMovies.map(movie => {
                 const attendeeList = movie.attendees.map(attendeeId => {
@@ -99,10 +129,10 @@ export default {
                 })
                 return
             })
-            console.log(this.findAttendeesNames[0])
-            const totalAttendees = this.theaterMovies.map(x => {
-                this.attendeesNum+=x.attendees.length
+            this.theaterMovies.map(x => {
+                totalAttendees+=x.attendees.length
             })
+            this.attendeesNum = totalAttendees
             this.totalGross = totalMoney + (this.attendeesNum * 8)
             return totalMoney
         }
