@@ -66,7 +66,7 @@ export default{
         },
         printPDF(){
             let moneySpend = 8
-            const calculate = this.itemsObj.map(item => moneySpend+=item.price)
+            this.itemsObj.map(item => moneySpend+=item.price)
             PDF.print(this.currentBooking, this.theater, this.name, this.age, this.shopItems, moneySpend)
             this.$store.dispatch('fetchTheaters')
             this.$store.dispatch('fetchMovies')

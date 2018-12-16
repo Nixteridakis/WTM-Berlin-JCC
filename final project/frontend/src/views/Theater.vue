@@ -1,7 +1,7 @@
 <template>
 <div>
     <booking v-if="currentBooking.Name !== undefined" :currentBooking="currentBooking" @clearBooking="clear" :theater="theater"></booking>
-    <div id="theater">
+    <div id="theater" v-if="theater !== undefined">
         <app-navbar></app-navbar>
         <header :style="{ backgroundImage: `url('${theater.image}')` }">
             <div class="theater-label">{{this.$route.params.name}}</div>
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="totalSales">
-                    <p @click.prevent="clear">Total Theater Sales {{ totalGross }}</p>
+                    <p>Total Theater Sales {{ totalGross }}</p>
                 </div>
         </main>
     </div>
@@ -43,6 +43,9 @@ export default {
     beforeMount(){
         this.clear
     },
+    mounted(){
+        this.itemSales
+    },
     components:{
     'booking': Booking
     },
@@ -51,7 +54,7 @@ export default {
             currentBooking : {},
             active: false,
             attendeesNum : 0,
-            totalGross: undefined
+            totalGross: 0
         }
     },
     methods: {
@@ -63,7 +66,7 @@ export default {
                 const findStateName = this.$store.state.attendees.filter(y => {
                    return y._id == x
                 })
-                if (findStateName !== undefined){
+                if (typeof findStateName[0] == 'object'){
                     return findStateName[0].name
                 }
             })
@@ -71,69 +74,57 @@ export default {
         },
         clear(){
             this.currentBooking = {}
-            let totalAttendees = 0
-            let totalMoney = 0
-
-            const attendeesItems = this.theaterMovies.map(movie => {
-                const attendeeList = movie.attendees.map(attendeeId => {
-                    const attendeeObj = this.$store.state.attendees.filter(x => x._id == attendeeId)
-                    return attendeeObj[0].shopped
-                })
-                return attendeeList
-            })
-            const gross = attendeesItems.map(personItems => {
-                const total = personItems.map(item => {
-                    if(item.length > 0){
-                        const singleItem = item.map(x =>{
-                            totalMoney += x.price
-                        })
-                    }
-                })
-                return
-            })
-            this.theaterMovies.map(x => {
-                totalAttendees+=x.attendees.length
-            })
-            this.attendeesNum = totalAttendees
-            this.totalGross = totalMoney + (this.attendeesNum * 8)
-            return totalMoney
         }
     },
     computed:{
         theater(){
-            const curr_theater = this.$store.state.theaters.filter(theater => theater.name ==  this.$route.params.name)
-            return curr_theater[0]
+            const state_theaters = this.$store.state.theaters
+            const curr_theater = typeof state_theaters[0] == 'object' ? state_theaters.filter(theater => theater.name ==  this.$route.params.name) : null
+            const response = curr_theater !== null ? curr_theater[0] : undefined
+            return response
         },
         theaterMovies(){
-            const theater = this.$store.state.theaters.filter(theater => theater.name ==  this.$route.params.name)[0]
-            const movies = theater !== undefined ? theater.movies : null
+            const movies = this.theater !== undefined ? this.theater.movies : null
             return movies
         },
          itemSales(){
-            let totalAttendees = 0
-            let totalMoney = 0
-            const attendeesItems = this.theaterMovies.map(movie => {
-                const attendeeList = movie.attendees.map(attendeeId => {
-                    const attendeeObj = this.$store.state.attendees.filter(x => x._id == attendeeId)
-                    return attendeeObj[0].shopped
+            let totalAttendees, totalMoney, attendeesItems
+            totalAttendees = 0
+            totalMoney = 0
+            if (this.theaterMovies !== null){
+                attendeesItems = this.theaterMovies.map(movie => {
+                    const attendeeList = movie.attendees.map(attendeeId => {
+                        const attendeeObj = this.$store.state.attendees.filter(x => x._id == attendeeId)
+                        if (typeof attendeeObj[0] == 'object'){ 
+                            return attendeeObj[0].shopped
+                        }
+                    })
+                    return attendeeList
                 })
-                return attendeeList
-            })
-            const gross = attendeesItems.map(personItems => {
-                const total = personItems.map(item => {
-                    if(item.length > 0){
-                        const singleItem = item.map(x =>{
-                            totalMoney += x.price
-                        })
-                    }
+            
+                attendeesItems.map(personItems => {
+                    personItems.map(item => {
+                        if (typeof item == 'object'){
+                            if(item.length > 0){
+                                item.map(x =>{
+                                    totalMoney += x.price
+                                })
+                            }
+                        }
+                    })
+                    return
                 })
-                return
-            })
-            this.theaterMovies.map(x => {
-                totalAttendees+=x.attendees.length
-            })
-            this.attendeesNum = totalAttendees
-            this.totalGross = totalMoney + (this.attendeesNum * 8)
+                this.theaterMovies.map(x => {
+                    totalAttendees+=x.attendees.length
+                })
+                let newAttendees = this.attendeesNum
+                newAttendees = totalAttendees
+
+                let newGross = this.totalGross
+                newGross = totalMoney + (newAttendees * 8)
+
+                this.totalGross = newGross
+            }
             return totalMoney
         }
     }
@@ -183,6 +174,7 @@ export default {
                 }
                 .movie-info{
                     width: 100%;
+                    max-height: 228px;
                     padding: 20px;
                     background-color: #202020;
                 

@@ -45,7 +45,7 @@ export default new Vuex.Store({
     async addAttendee({commit}, data ){
       const newPerson = await axios.post('http://localhost:3000/person',{name:data.name,age:data.age,shopped:[]});
       await axios.post(`http://localhost:3000/movie/${data.id}/addPerson`,{personId:newPerson.data._id})
-      const loop = data.shopItems.map(async(item)=>{
+      data.shopItems.map(async(item)=>{
         await axios.post(`http://localhost:3000/person/${newPerson.data._id}/add-item`,{itemId:item._id})
       });
 
