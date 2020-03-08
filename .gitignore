@@ -1,4 +1,5 @@
 node_modules/
 notes/
 movie-TItans.json
-output.pdf  
+output.pdf
+package-lock.json
